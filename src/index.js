@@ -4,6 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 import { registerBlockType } from '@wordpress/blocks';
+import './team-member';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,8 +21,6 @@ import './style.scss';
 import Edit from './edit';
 import save from './save';
 import metadata from './block.json';
-
-// const x = 0;
 
 /**
  * Every block starts by registering a new block type definition.
