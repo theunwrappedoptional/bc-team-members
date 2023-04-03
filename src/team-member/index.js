@@ -6,16 +6,35 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
+import Edit from './edit';
+import Save from './save';
+
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 registerBlockType( 'blocks-course/team-member', {
-	title: __( 'Team Member', 'team-members' ),
-	description: __( 'A team member item', 'team-members' ),
+	title: __( 'Team Member', 'bc-team-members' ),
+	description: __( 'A team member item', 'bc-team-members' ),
 	icon: 'admin-users',
 	parent: [ 'blocks-course/team-members' ],
-	edit: () => <p>edit</p>,
-	save: () => <p>save</p>,
+	supports: {
+		reusable: false,
+		html: false,
+	},
+	attributes: {
+		name: {
+			type: 'string',
+			source: 'html',
+			selector: 'h4',
+		},
+		bio: {
+			type: 'string',
+			source: 'html',
+			selector: 'p',
+		},
+	},
+	edit: Edit,
+	save: Save,
 } );

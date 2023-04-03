@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-// import { __ } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,12 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	InnerBlocks,
+	InspectorControls,
+} from '@wordpress/block-editor';
+import { PanelBody, RangeControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +34,39 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+
+export default function Edit( { attributes, setAttributes } ) {
+	const { columns } = attributes;
+
+	const onChangeColumns = ( newColumns ) => {
+		setAttributes( { columns: newColumns } );
+	};
+
 	return (
-		<div { ...useBlockProps() }>
-			<InnerBlocks allowedBlocks={ [ 'blocks-course/team-member' ] } />
+		<div
+			{ ...useBlockProps( {
+				className: `has-${ columns }-columns`,
+			} ) }
+		>
+			<InspectorControls>
+				<PanelBody>
+					<RangeControl
+						label={ __( 'Columns', 'bc-team-members' ) }
+						min={ 1 }
+						max={ 6 }
+						value={ columns }
+						onChange={ onChangeColumns }
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<InnerBlocks
+				allowedBlocks={ [ 'blocks-course/team-member' ] }
+				template={ [
+					[ 'blocks-course/team-member' ],
+					[ 'blocks-course/team-member' ],
+					[ 'blocks-course/team-member' ],
+				] }
+			/>
 		</div>
 	);
 }

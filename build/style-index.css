@@ -7,8 +7,45 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-create-block-boilerplate {
-  background-color: rgb(240, 202, 86);
+.wp-block-blocks-course-team-members {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.wp-block-blocks-course-team-members.has-1-columns .wp-block-blocks-course-team-member {
+  width: calc(100% / 1 - 20px);
+}
+.wp-block-blocks-course-team-members.has-2-columns .wp-block-blocks-course-team-member {
+  width: calc(100% / 2 - 20px);
+}
+.wp-block-blocks-course-team-members.has-3-columns .wp-block-blocks-course-team-member {
+  width: calc(100% / 3 - 20px);
+}
+.wp-block-blocks-course-team-members.has-4-columns .wp-block-blocks-course-team-member {
+  width: calc(100% / 4 - 20px);
+}
+.wp-block-blocks-course-team-members.has-5-columns .wp-block-blocks-course-team-member {
+  width: calc(100% / 5 - 20px);
+}
+.wp-block-blocks-course-team-members.has-6-columns .wp-block-blocks-course-team-member {
+  width: calc(100% / 6 - 20px);
+}
+.wp-block-blocks-course-team-members .wp-block-blocks-course-team-member {
+  margin: 10px;
+}
+.wp-block-blocks-course-team-members .wp-block-blocks-course-team-member h4 {
+  color: #222;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+.wp-block-blocks-course-team-members .wp-block-blocks-course-team-member p {
+  color: #565656;
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

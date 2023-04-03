@@ -14,16 +14,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 
 /**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-// import { __ } from '@wordpress/i18n';
+
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -31,6 +35,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
+
 
 
 /**
@@ -49,9 +54,31 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {WPElement} Element to render.
  */
-function Edit() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-    allowedBlocks: ['blocks-course/team-member']
+
+function Edit(_ref) {
+  let {
+    attributes,
+    setAttributes
+  } = _ref;
+  const {
+    columns
+  } = attributes;
+  const onChangeColumns = newColumns => {
+    setAttributes({
+      columns: newColumns
+    });
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+    className: `has-${columns}-columns`
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Columns', 'bc-team-members'),
+    min: 1,
+    max: 6,
+    value: columns,
+    onChange: onChangeColumns
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
+    allowedBlocks: ['blocks-course/team-member'],
+    template: [['blocks-course/team-member'], ['blocks-course/team-member'], ['blocks-course/team-member']]
   }));
 }
 
@@ -145,8 +172,70 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {WPElement} Element to render.
  */
-function save() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null));
+
+function save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    columns
+  } = attributes;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+    className: `has-${columns}-columns`
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null));
+}
+
+/***/ }),
+
+/***/ "./src/team-member/edit.js":
+/*!*********************************!*\
+  !*** ./src/team-member/edit.js ***!
+  \*********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Edit; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function Edit(_ref) {
+  let {
+    attributes,
+    setAttributes
+  } = _ref;
+  const {
+    name,
+    bio
+  } = attributes;
+  const onChangeName = newName => {
+    setAttributes({
+      name: newName
+    });
+  };
+  const onChangeBio = newBio => {
+    setAttributes({
+      bio: newBio
+    });
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Member Name', 'bc-team-members'),
+    tagName: "h4",
+    onChange: onChangeName,
+    value: name
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Member Bio', 'bc-team-members'),
+    tagName: "p",
+    onChange: onChangeBio,
+    value: bio
+  }));
 }
 
 /***/ }),
@@ -158,13 +247,12 @@ function save() {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/team-member/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/team-member/save.js");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -173,19 +261,72 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('blocks-course/team-member', {
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Team Member", "team-members"),
-  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("A team member item", "team-members"),
-  icon: "admin-users",
-  parent: ["blocks-course/team-members"],
-  edit: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "edit"),
-  save: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "save")
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('blocks-course/team-member', {
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Team Member', 'bc-team-members'),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('A team member item', 'bc-team-members'),
+  icon: 'admin-users',
+  parent: ['blocks-course/team-members'],
+  supports: {
+    reusable: false,
+    html: false
+  },
+  attributes: {
+    name: {
+      type: 'string',
+      source: 'html',
+      selector: 'h4'
+    },
+    bio: {
+      type: 'string',
+      source: 'html',
+      selector: 'p'
+    }
+  },
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
+
+/***/ }),
+
+/***/ "./src/team-member/save.js":
+/*!*********************************!*\
+  !*** ./src/team-member/save.js ***!
+  \*********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Save; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function Save(_ref) {
+  let {
+    attributes
+  } = _ref;
+  const {
+    name,
+    bio
+  } = attributes;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "h4",
+    value: name
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "p",
+    value: bio
+  }));
+}
 
 /***/ }),
 
@@ -233,6 +374,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -259,7 +410,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"blocks-course/team-members","version":"0.1.0","title":"Team Members","category":"media","icon":"groups","description":"A team members grid.","keywords":["Team","Members","Grid"],"supports":{"html":false},"textdomain":"team-members","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"blocks-course/team-members","version":"0.1.0","title":"Team Members","category":"media","icon":"groups","description":"A team members grid.","keywords":["Team","Members","Grid"],"supports":{"html":false},"textdomain":"team-members","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"columns":{"type":"number","default":2}}}');
 
 /***/ })
 
