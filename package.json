@@ -17,7 +17,10 @@
 	},
 	"prettier": "@wordpress/prettier-config",
 	"stylelint": {
-		"extends": "@wordpress/stylelint-config/scss"
+		"extends": "@wordpress/stylelint-config/scss",
+		"rules": {
+			"selector-class-pattern": null
+		}
 	},
 	"lint-staged": {
 		"*.js": [
@@ -37,6 +40,7 @@
 		"stylelint": "^14.16.1"
 	},
 	"dependencies": {
+		"@wordpress/blob": "^3.30.0",
 		"@wordpress/components": "^23.7.0"
 	}
 }

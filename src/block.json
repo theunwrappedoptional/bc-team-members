@@ -7,11 +7,7 @@
 	"category": "media",
 	"icon": "groups",
 	"description": "A team members grid.",
-	"keywords": [
-		"Team",
-		"Members",
-		"Grid"
-	],
+	"keywords": [ "Team", "Members", "Grid" ],
 	"supports": {
 		"html": false
 	},
