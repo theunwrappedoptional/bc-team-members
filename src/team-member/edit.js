@@ -1,4 +1,4 @@
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import {
 	useBlockProps,
 	RichText,
@@ -11,6 +11,7 @@ import {
 import { isBlobURL, revokeBlobURL } from '@wordpress/blob';
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
+import { usePrevious } from '@wordpress/compose';
 import {
 	Spinner,
 	withNotices,
@@ -18,11 +19,25 @@ import {
 	PanelBody,
 	TextareaControl,
 	SelectControl,
+	Icon,
+	Tooltip,
 } from '@wordpress/components';
 
-function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
-	const { name, bio, url, alt, id } = attributes;
+function Edit( {
+	attributes,
+	setAttributes,
+	noticeOperations,
+	noticeUI,
+	isSelected,
+} ) {
+	const { name, bio, url, alt, id, socialLinks } = attributes;
 	const [ blobURL, setBlobURL ] = useState();
+	const [ selectedLink, setSelectedLink ] = useState();
+
+	const titleRef = useRef();
+
+	const prevURL = usePrevious( url );
+	const prevIsSelected = usePrevious( isSelected );
 
 	const imageObject = useSelect(
 		( select ) => {
@@ -90,6 +105,19 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 		setAttributes( { url: undefined, id: undefined, alt: '' } );
 	};
 
+	const addNewSocialItem = () => {
+		setAttributes( {
+			socialLinks: [
+				...socialLinks,
+				{
+					icon: 'wordpress',
+					link: '',
+				},
+			],
+		} );
+		setSelectedLink( socialLinks.length );
+	};
+
 	useEffect( () => {
 		if ( ! id && isBlobURL( url ) ) {
 			setAttributes( {
@@ -97,6 +125,7 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 				alt: '',
 			} );
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [] );
 
 	useEffect( () => {
@@ -106,7 +135,20 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 			revokeBlobURL( blobURL );
 			setBlobURL();
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ url ] );
+
+	useEffect( () => {
+		if ( url && ! prevURL ) {
+			titleRef.current.focus();
+		}
+	}, [ url, prevURL ] );
+
+	useEffect( () => {
+		if ( prevIsSelected && ! isSelected ) {
+			setSelectedLink();
+		}
+	}, [ isSelected, prevIsSelected ] );
 
 	return (
 		<>
@@ -172,6 +214,7 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 					notices={ noticeUI }
 				/>
 				<RichText
+					ref={ titleRef }
 					placeholder={ __( 'Member Name', 'bc-team-members' ) }
 					tagName="h4"
 					onChange={ onChangeName }
@@ -183,6 +226,52 @@ function Edit( { attributes, setAttributes, noticeOperations, noticeUI } ) {
 					onChange={ onChangeBio }
 					value={ bio }
 				/>
+				<div className="wp-blocks-course-team-member-social-links">
+					<ul>
+						{ socialLinks.map( ( item, index ) => {
+							return (
+								<li key={ index }>
+									<button
+										aria-label={ __(
+											'Edit Social Link',
+											'bc-team-members'
+										) }
+										onClick={ () =>
+											setSelectedLink( index )
+										}
+										className={
+											index === selectedLink
+												? 'is-selected'
+												: null
+										}
+									>
+										<Icon icon={ item.icon } />
+									</button>
+								</li>
+							);
+						} ) }
+						{ isSelected && (
+							<li className="wp-blocks-course-team-member-social-add-icon">
+								<Tooltip
+									text={ __(
+										'Add Social Link',
+										'bc-team-members'
+									) }
+								>
+									<button
+										aria-label={ __(
+											'Add Social Link',
+											'bc-team-members'
+										) }
+										onClick={ addNewSocialItem }
+									>
+										<Icon icon="plus" />
+									</button>
+								</Tooltip>
+							</li>
+						) }
+					</ul>
+				</div>
 			</div>
 		</>
 	);

@@ -13,7 +13,10 @@
     "Grid"
   ],
   "supports": {
-    "html": false
+    "html": false,
+    "align": [
+      "wide"
+    ]
   },
   "textdomain": "team-members",
   "editorScript": "file:./index.js",
