@@ -7,7 +7,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 import Edit from './edit';
-import Save from './save';
+import save from './save';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -59,5 +59,5 @@ registerBlockType( 'blocks-course/team-member', {
 		},
 	},
 	edit: Edit,
-	save: Save,
+	save,
 } );
