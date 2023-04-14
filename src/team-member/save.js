@@ -25,7 +25,7 @@ export default function Save( { attributes } ) {
 									<a
 										href={ item.link }
 										target="_blank"
-										rel="noreferrer"
+										rel="noreferrer noopener"
 									>
 										<Icon icon={ item.icon } />
 									</a>

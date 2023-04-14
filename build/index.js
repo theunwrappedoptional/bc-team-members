@@ -559,7 +559,7 @@ function Save(_ref) {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: item.link,
       target: "_blank",
-      rel: "noreferrer"
+      rel: "noreferrer noopener"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
       icon: item.icon
     })));
