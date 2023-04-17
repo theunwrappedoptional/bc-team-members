@@ -21,6 +21,8 @@ import {
 	SelectControl,
 	Icon,
 	Tooltip,
+	TextControl,
+	Button,
 } from '@wordpress/components';
 
 function Edit( {
@@ -116,6 +118,12 @@ function Edit( {
 			],
 		} );
 		setSelectedLink( socialLinks.length );
+	};
+
+	const updateSocialItem = ( type, value ) => {
+		const socialLinksCopy = [ ...socialLinks ];
+		socialLinksCopy[ selectedLink ][ type ] = value;
+		setAttributes( { socialLinks: socialLinksCopy } );
 	};
 
 	useEffect( () => {
@@ -272,6 +280,28 @@ function Edit( {
 						) }
 					</ul>
 				</div>
+				{ selectedLink !== undefined && (
+					<div className="wp-blocks-course-team-member-link-form">
+						<TextControl
+							label={ __( 'icon', 'bc-team-members' ) }
+							value={ socialLinks[ selectedLink ].icon }
+							onChange={ ( icon ) => {
+								updateSocialItem( 'icon', icon );
+							} }
+						/>
+						<TextControl
+							label={ __( 'URL', 'bc-team-members' ) }
+							value={ socialLinks[ selectedLink ].link }
+							onChange={ ( link ) => {
+								updateSocialItem( 'link', link );
+							} }
+						/>
+						<br />
+						<Button isDestructive>
+							{ __( 'Remove Link', 'bc-team-members' ) }
+						</Button>
+					</div>
+				) }
 			</div>
 		</>
 	);

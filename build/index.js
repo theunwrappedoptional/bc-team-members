@@ -324,6 +324,13 @@ function Edit(_ref) {
     });
     setSelectedLink(socialLinks.length);
   };
+  const updateSocialItem = (type, value) => {
+    const socialLinksCopy = [...socialLinks];
+    socialLinksCopy[selectedLink][type] = value;
+    setAttributes({
+      socialLinks: socialLinksCopy
+    });
+  };
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (!id && (0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__.isBlobURL)(url)) {
       setAttributes({
@@ -423,7 +430,23 @@ function Edit(_ref) {
     onClick: addNewSocialItem
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.Icon, {
     icon: "plus"
-  }))))))));
+  })))))), selectedLink !== undefined && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "wp-blocks-course-team-member-link-form"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('icon', 'bc-team-members'),
+    value: socialLinks[selectedLink].icon,
+    onChange: icon => {
+      updateSocialItem('icon', icon);
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('URL', 'bc-team-members'),
+    value: socialLinks[selectedLink].link,
+    onChange: link => {
+      updateSocialItem('link', link);
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.Button, {
+    isDestructive: true
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Remove Link', 'bc-team-members')))));
 }
 /* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.withNotices)(Edit));
 
@@ -501,7 +524,20 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         link: 'https:/instagram.com',
         icon: 'instagram'
-      }]
+      }],
+      source: 'query',
+      selector: '.wp-blocks-course-team-member-social-links ul li',
+      query: {
+        icon: {
+          source: 'attribute',
+          attribute: 'data-icon'
+        },
+        link: {
+          source: 'attribute',
+          selector: 'a',
+          attribute: 'href'
+        }
+      }
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -555,7 +591,8 @@ function Save(_ref) {
     className: "wp-blocks-course-team-member-social-links"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, socialLinks.map((item, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      key: index
+      key: index,
+      "data-icon": item.icon
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: item.link,
       target: "_blank",

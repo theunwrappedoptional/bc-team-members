@@ -21,7 +21,7 @@ export default function Save( { attributes } ) {
 					<ul>
 						{ socialLinks.map( ( item, index ) => {
 							return (
-								<li key={ index }>
+								<li key={ index } data-icon={ item.icon }>
 									<a
 										href={ item.link }
 										target="_blank"
