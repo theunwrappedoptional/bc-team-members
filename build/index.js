@@ -331,6 +331,12 @@ function Edit(_ref) {
       socialLinks: socialLinksCopy
     });
   };
+  const removeSocialItem = () => {
+    setAttributes({
+      socialLinks: [...socialLinks.slice(0, selectedLink), ...socialLinks.slice(selectedLink + 1)]
+    });
+    setSelectedLink();
+  };
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (!id && (0,_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__.isBlobURL)(url)) {
       setAttributes({
@@ -445,7 +451,8 @@ function Edit(_ref) {
       updateSocialItem('link', link);
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.Button, {
-    isDestructive: true
+    isDestructive: true,
+    onClick: removeSocialItem
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Remove Link', 'bc-team-members')))));
 }
 /* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.withNotices)(Edit));
@@ -587,7 +594,7 @@ function Save(_ref) {
   }), bio && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
     value: bio
-  }), socialLinks.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), socialLinks.length > 0 && name && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-blocks-course-team-member-social-links"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, socialLinks.map((item, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
