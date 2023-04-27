@@ -40,6 +40,10 @@
 		"stylelint": "^14.16.1"
 	},
 	"dependencies": {
+		"@dnd-kit/core": "^6.0.8",
+		"@dnd-kit/modifiers": "^6.0.1",
+		"@dnd-kit/sortable": "^7.0.2",
+		"@dnd-kit/utilities": "^3.2.1",
 		"@wordpress/blob": "^3.30.0",
 		"@wordpress/components": "^23.7.0",
 		"@wordpress/compose": "^6.8.0",
