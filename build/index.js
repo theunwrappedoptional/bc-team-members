@@ -5721,7 +5721,7 @@ function Edit(_ref) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (url && !prevURL) {
+    if (url && !prevURL && isSelected) {
       titleRef.current.focus();
     }
   }, [url, prevURL]);
@@ -5896,13 +5896,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     socialLinks: {
       type: 'array',
-      default: [{
-        link: 'https:/facebook.com',
-        icon: 'facebook'
-      }, {
-        link: 'https:/instagram.com',
-        icon: 'instagram'
-      }],
+      default: [
+        // { link: 'https:/facebook.com', icon: 'facebook' },
+        // { link: 'https:/instagram.com', icon: 'instagram' },
+      ],
       source: 'query',
       selector: '.wp-blocks-course-team-member-social-links ul li',
       query: {
@@ -6193,7 +6190,7 @@ function _extends() {
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"blocks-course/team-members","version":"0.1.0","title":"Team Members","category":"media","icon":"groups","description":"A team members grid.","keywords":["Team","Members","Grid"],"supports":{"html":false,"align":["wide"]},"textdomain":"team-members","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"columns":{"type":"number","default":2}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"blocks-course/team-members","version":"0.1.0","title":"Team Members","category":"media","icon":"groups","description":"A team members grid.","keywords":["Team","Members","Grid"],"supports":{"html":false,"align":["wide"]},"textdomain":"team-members","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"columns":{"type":"number","default":2}},"example":{"attributes":{"columns":2},"innerBlocks":[{"name":"blocks-course/team-member","attributes":{"name":"Jhon Doe","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation","url":"https://picsum.photos/id/1012/300/200","socialLinks":[{"icon":"facebook"},{"icon":"twitter"},{"icon":"instagram"}]}},{"name":"blocks-course/team-member","attributes":{"name":"Jane Doe","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation","url":"https://picsum.photos/id/1011/300/200","socialLinks":[{"icon":"facebook"},{"icon":"twitter"},{"icon":"instagram"}]}}]}}');
 
 /***/ })
 

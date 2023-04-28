@@ -7,10 +7,16 @@
 	"category": "media",
 	"icon": "groups",
 	"description": "A team members grid.",
-	"keywords": [ "Team", "Members", "Grid" ],
+	"keywords": [
+		"Team",
+		"Members",
+		"Grid"
+	],
 	"supports": {
 		"html": false,
-		"align": [ "wide" ]
+		"align": [
+			"wide"
+		]
 	},
 	"textdomain": "team-members",
 	"editorScript": "file:./index.js",
@@ -21,5 +27,50 @@
 			"type": "number",
 			"default": 2
 		}
+	},
+	"example": {
+		"attributes": {
+			"columns": 2
+		},
+		"innerBlocks": [
+			{
+				"name": "blocks-course/team-member",
+				"attributes": {
+					"name": "Jhon Doe",
+					"bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+					"url": "https://picsum.photos/id/1012/300/200",
+					"socialLinks": [
+						{
+							"icon": "facebook"
+						},
+						{
+							"icon": "twitter"
+						},
+						{
+							"icon": "instagram"
+						}
+					]
+				}
+			},
+			{
+				"name": "blocks-course/team-member",
+				"attributes": {
+					"name": "Jane Doe",
+					"bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+					"url": "https://picsum.photos/id/1011/300/200",
+					"socialLinks": [
+						{
+							"icon": "facebook"
+						},
+						{
+							"icon": "twitter"
+						},
+						{
+							"icon": "instagram"
+						}
+					]
+				}
+			}
+		]
 	}
 }
